@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contabilidad Administrativa - UMG</title>
+  <style>
+    :root{
+      --umg-red:#b20000;
+      --umg-gold:#d4af37;
+      --bg:#fff5e6;
+      --card:#ffffff;
+      --muted:#444;
+    }
+    *{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+    body{margin:0;background:var(--bg);color:#222;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .container{width:100%;max-width:980px}
+
+    .header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+    .header img{height:70px}
+    h1{font-size:24px;margin:0;color:var(--umg-red)}
+    p.lead{color:var(--muted);margin:4px 0 0;font-size:14px}
+
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .card{background:var(--card);padding:14px;border-radius:12px;border:2px solid var(--umg-gold);}
+    .topic{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;background:#f9f2dd;cursor:pointer}
+    .topic h3{margin:0;font-size:16px;color:var(--umg-red)}
+    .topic small{color:var(--muted)}
+
+    .panel{position:fixed;right:20px;top:80px;width:360px;max-height:70vh;overflow:auto;padding:18px;border-radius:12px;background:#fff;border:2px solid var(--umg-gold);}
+    .panel h2{margin:0 0 8px;color:var(--umg-red)}
+    .sub{background:#fff8e1;padding:10px;border-radius:8px;margin-bottom:8px}
+    .sub .title{margin:0 0 4px;color:var(--umg-red);font-weight:600}
+    .sub .def{margin:0;color:#333;font-size:14px}
+
+    .back{margin-top:12px;padding:8px 12px;border-radius:8px;background:var(--umg-red);border:none;color:white;cursor:pointer}
+
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(3px);}
+    .welcome{background:#fff;padding:26px;border-radius:16px;max-width:720px;color:#222;border:3px solid var(--umg-gold)}
+    .welcome h2{margin:0 0 8px;color:var(--umg-red)}
+    .welcome p{margin:0 0 14px;color:#333}
+    .btn{padding:10px 16px;border-radius:8px;background:var(--umg-red);color:white;font-weight:600;border:none;cursor:pointer}
+
+    @media(max-width:880px){
+      .grid{grid-template-columns:1fr}
+      .panel{position:static;width:100%;max-height:none;margin-top:14px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://i.imgur.com/1zQbR2M.png" alt="UMG Logo" />
+      <div>
+        <h1>Contabilidad Administrativa — UMG</h1>
+        <p class="lead">Temas interactivos con subtemas y definiciones.</p>
+      </div>
+    </div>
+
+    <div class="grid" id="topicsGrid"></div>
+
+    <div class="panel" id="panel" style="display:none">
+      <h2 id="panelTitle"></h2>
+      <div id="panelContent"></div>
+      <button class="back" id="btnBack">Volver</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="welcome">
+      <h2>Bienvenido/a</h2>
+      <p>Esta página presenta los temas principales de Contabilidad Administrativa con diseño inspirado en la UMG.</p>
+      <button class="btn" id="enterBtn">Entrar</button>
+    </div>
+  </div>
+
+  <script>
+    const topics=[
+      {id:'costos',title:'Costos',subs:[{t:'Tipos de costos',d:'Clasificación según su comportamiento.'},{t:'Comportamiento',d:'Cómo cambian los costos con la producción.'},{t:'Costos para decisiones',d:'Costos útiles para elegir alternativa.'}]},
+      {id:'sistemas',title:'Sistemas de costeo',subs:[{t:'Costeo por órdenes',d:'Para trabajos personalizados.'},{t:'Costeo por procesos',d:'Para producción en masa.'},{t:'Directo vs absorbente',d:'Directo=variables; absorbente=todos.'}]},
+      {id:'cvu',title:'Análisis CVU',subs:[{t:'Punto de equilibrio',d:'Donde no hay ganancia ni pérdida.'},{t:'Margen de contribución',d:'Monto que cubre costos fijos.'}]},
+      {id:'presupuestos',title:'Presupuestos',subs:[{t:'Maestro',d:'Plan financiero completo.'},{t:'Variaciones',d:'Diferencia entre real y planificado.'}]},
+      {id:'decisiones',title:'Toma de decisiones',subs:[{t:'Fabricar o comprar',d:'Elegir opción más rentable.'},{t:'Pedidos especiales',d:'Pedidos únicos que dan ganancia extra.'}]},
+      {id:'liquidez',title:'Liquidez',subs:[{t:'Disponibilidad',d:'Efectivo inmediato para deudas.'},{t:'Razón corriente',d:'Activo corriente / pasivo corriente.'},{t:'Prueba ácida',d:'Liquidez sin inventarios.'}]},
+      {id:'solvencia',title:'Solvencia',subs:[{t:'Endeudamiento',d:'Nivel de uso de deuda.'},{t:'Solvencia largo plazo',d:'Capacidad de pagar en el futuro.'}]},
+      {id:'rentabilidad',title:'Rentabilidad',subs:[{t:'ROA',d:'Retorno sobre activos.'},{t:'ROE',d:'Retorno sobre capital propio.'},{t:'Margen neto',d:'Ganancia respecto a ventas.'}]},
+      {id:'gestion',title:'Gestión',subs:[{t:'Rotación inventarios',d:'Velocidad de venta.'},{t:'Periodo cobro/pago',d:'Tiempo en cobrar o pagar.'}]}
+    ];
+
+    const grid=document.getElementById('topicsGrid');
+    const panel=document.getElementById('panel');
+    const panelTitle=document.getElementById('panelTitle');
+    const panelContent=document.getElementById('panelContent');
+    const btnBack=document.getElementById('btnBack');
+
+    function makeCard(topic){
+      const card=document.createElement('div');card.className='card';
+      const inner=document.createElement('div');inner.className='topic';inner.innerHTML=`<h3>${topic.title}</h3><small>Ver subtemas</small>`;
+      inner.onclick=()=>showTopic(topic);
+      card.appendChild(inner);
+      return card;
+    }
+
+    function showTopic(topic){
+      panelTitle.textContent=topic.title;
+      panelContent.innerHTML='';
+      topic.subs.forEach(s=>{
+        const sub=document.createElement('div');sub.className='sub';
+        sub.innerHTML=`<p class="title">${s.t}</p><p class="def">${s.d}</p>`;
+        panelContent.appendChild(sub);
+      });
+      panel.style.display='block';
+    }
+
+    btnBack.onclick=()=>panel.style.display='none';
+    topics.forEach(t=>grid.appendChild(makeCard(t)));
+
+    document.getElementById('enterBtn').onclick=()=>document.getElementById('modal').style.display='none';
+  </script>
+</body>
+</html>
