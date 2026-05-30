@@ -1,1 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conecta y Avanza</title>
 
+<style>
+:root{
+    --verde:#0f5132;
+    --verde-claro:#198754;
+    --blanco:#ffffff;
+    --gris:#f5f5f5;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:var(--gris);
+    color:#222;
+}
+
+header{
+    background:linear-gradient(135deg,var(--verde),var(--verde-claro));
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+header h1{
+    font-size:2.5rem;
+}
+
+header p{
+    margin-top:10px;
+    font-size:1.1rem;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-left:6px solid var(--verde);
+    border-radius:12px;
+    margin-bottom:20px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card h2{
+    color:var(--verde);
+    margin-bottom:12px;
+    cursor:pointer;
+}
+
+.content{
+    display:none;
+    margin-top:10px;
+}
+
+ul{
+    padding-left:20px;
+    margin-top:8px;
+}
+
+.alerta{
+    background:#d1e7dd;
+    color:#0f5132;
+    padding:12px;
+    border-radius:10px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.recomendacion{
+    background:#f8fff9;
+    border:2px solid var(--verde-claro);
+    padding:12px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+footer{
+    background:var(--verde);
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+button{
+    background:var(--verde);
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    margin-top:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:var(--verde-claro);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌿 Conecta y Avanza</h1>
+    <p>Factores psicológicos y sociales que influyen en el rendimiento académico universitario</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2 onclick="toggle(this)">🧠 Ansiedad académica</h2>
+<div class="content">
+<p><strong>Causas:</strong></p>
+<ul>
+<li>Presión por exámenes</li>
+<li>Sobrecarga de tareas</li>
+<li>Miedo a fallar</li>
+<li>Falta de descanso</li>
+</ul>
+
+<div class="alerta">
+⚠ Alertas: nervios excesivos, bloqueo mental, sudoración, insomnio.
+</div>
+
+<div class="recomendacion">
+✅ Recomendaciones: respiración profunda, estudiar con anticipación, dormir bien y pedir apoyo cuando sea necesario.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 onclick="toggle(this)">📚 Procrastinación</h2>
+<div class="content">
+<ul>
+<li>Dejar tareas para último momento</li>
+<li>Distracciones constantes</li>
+<li>Mala organización del tiempo</li>
+</ul>
+
+<div class="alerta">
+⚠ Alertas: entregas tardías, estrés acumulado y cansancio extremo.
+</div>
+
+<div class="recomendacion">
+✅ Usa agenda, divide tareas pequeñas y evita redes sociales mientras estudias.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 onclick="toggle(this)">🎯 Motivación académica</h2>
+<div class="content">
+<ul>
+<li>Influye directamente en el esfuerzo</li>
+<li>Ayuda a mantener constancia</li>
+<li>Favorece mejores resultados</li>
+</ul>
+
+<div class="alerta">
+⚠ Señales: desinterés, falta de energía y ausencia de metas.
+</div>
+
+<div class="recomendacion">
+✅ Establece objetivos pequeños y celebra avances.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 onclick="toggle(this)">🏠 Ambiente familiar</h2>
+<div class="content">
+<ul>
+<li>Apoyo emocional</li>
+<li>Comprensión familiar</li>
+<li>Espacio tranquilo en casa</li>
+</ul>
+
+<div class="alerta">
+⚠ Alertas: discusiones frecuentes, poca comunicación o ambiente ruidoso.
+</div>
+
+<div class="recomendacion">
+✅ Hablar con la familia y buscar espacios adecuados de estudio.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 onclick="toggle(this)">👥 Influencia social y amistades</h2>
+<div class="content">
+<ul>
+<li>Las amistades pueden motivar o distraer</li>
+<li>El entorno social afecta emociones y hábitos</li>
+</ul>
+
+<div class="alerta">
+⚠ Alertas: presión social negativa o aislamiento.
+</div>
+
+<div class="recomendacion">
+✅ Rodéate de personas que apoyen tu crecimiento académico.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 onclick="toggle(this)">💼 Trabajo y estudio</h2>
+<div class="content">
+<ul>
+<li>Puede generar agotamiento</li>
+<li>Reduce tiempo libre</li>
+<li>Exige mayor organización</li>
+</ul>
+
+<div class="alerta">
+⚠ Alertas: fatiga, estrés constante y bajo rendimiento.
+</div>
+
+<div class="recomendacion">
+✅ Crear horarios equilibrados y priorizar descanso.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 onclick="toggle(this)">🌱 Hábitos saludables para avanzar</h2>
+<div class="content">
+<ul>
+<li>Dormir adecuadamente</li>
+<li>Alimentación equilibrada</li>
+<li>Tiempo de descanso</li>
+<li>Actividad física</li>
+<li>Pedir ayuda profesional cuando sea necesario</li>
+</ul>
+
+<button onclick="mensaje()">Ver mensaje motivacional</button>
+
+<p id="motivacion" style="margin-top:15px;font-weight:bold;color:#0f5132;"></p>
+</div>
+</div>
+
+</div>
+
+<footer>
+Conecta y Avanza • Universidad Mesoamericana • Facultad de Ingeniería
+</footer>
+
+<script>
+function toggle(element){
+    const content = element.nextElementSibling;
+    content.style.display =
+        content.style.display==="block" ? "none":"block";
+}
+
+function mensaje(){
+    const frases=[
+        "Tu bienestar emocional también forma parte de tu éxito académico 🌿",
+        "Un pequeño avance cada día genera grandes resultados 📚",
+        "Pedir apoyo también es una forma de avanzar 🤝",
+        "Cuidarte emocionalmente mejora tu rendimiento académico 💚"
+    ];
+
+    const random =
+        frases[Math.floor(Math.random()*frases.length)];
+
+    document.getElementById("motivacion").innerText=random;
+}
+</script>
+
+</body>
+</html>
