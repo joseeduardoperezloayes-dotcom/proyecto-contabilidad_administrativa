@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Conecta y Avanza</title>
 
 <style>
+
 :root{
     --verde:#0f5132;
     --verde-claro:#198754;
@@ -17,7 +19,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -33,7 +35,7 @@ header{
 }
 
 header h1{
-    font-size:2.5rem;
+    font-size:2.6rem;
 }
 
 header p{
@@ -51,8 +53,8 @@ header p{
     background:white;
     border-left:6px solid var(--verde);
     border-radius:12px;
-    margin-bottom:20px;
     padding:20px;
+    margin-bottom:20px;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
     transition:.3s;
 }
@@ -63,8 +65,8 @@ header p{
 
 .card h2{
     color:var(--verde);
-    margin-bottom:12px;
     cursor:pointer;
+    margin-bottom:12px;
 }
 
 .content{
@@ -82,7 +84,7 @@ ul{
     color:#0f5132;
     padding:12px;
     border-radius:10px;
-    margin-top:10px;
+    margin-top:12px;
     font-weight:bold;
 }
 
@@ -91,7 +93,22 @@ ul{
     border:2px solid var(--verde-claro);
     padding:12px;
     border-radius:10px;
-    margin-top:10px;
+    margin-top:12px;
+}
+
+button{
+    background:var(--verde);
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:var(--verde-claro);
 }
 
 footer{
@@ -102,20 +119,6 @@ footer{
     margin-top:40px;
 }
 
-button{
-    background:var(--verde);
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:10px;
-    margin-top:12px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-button:hover{
-    background:var(--verde-claro);
-}
 </style>
 </head>
 
@@ -123,95 +126,169 @@ button:hover{
 
 <header>
     <h1>🌿 Conecta y Avanza</h1>
-    <p>Factores psicológicos y sociales que influyen en el rendimiento académico universitario</p>
+
+    <p>
+        Factores psicológicos y sociales que influyen en el rendimiento académico
+        de estudiantes universitarios
+    </p>
 </header>
 
 <div class="container">
 
+<!-- ANSIEDAD -->
+
 <div class="card">
 <h2 onclick="toggle(this)">🧠 Ansiedad académica</h2>
+
 <div class="content">
-<p><strong>Causas:</strong></p>
+
 <ul>
-<li>Presión por exámenes</li>
+<li>Presión por evaluaciones</li>
 <li>Sobrecarga de tareas</li>
-<li>Miedo a fallar</li>
+<li>Miedo al fracaso</li>
 <li>Falta de descanso</li>
 </ul>
 
 <div class="alerta">
-⚠ Alertas: nervios excesivos, bloqueo mental, sudoración, insomnio.
+⚠ Alertas: bloqueo mental, nervios excesivos, sudoración e insomnio.
 </div>
 
 <div class="recomendacion">
-✅ Recomendaciones: respiración profunda, estudiar con anticipación, dormir bien y pedir apoyo cuando sea necesario.
+✅ Recomendación: organizar el estudio con tiempo, descansar y evitar acumular tareas.
+</div>
+
 </div>
 </div>
+
+<!-- PSICOLOGIA -->
+
+<div class="card">
+<h2 onclick="toggle(this)">🧑‍⚕️ Psicología y apoyo profesional</h2>
+
+<div class="content">
+
+<p>
+La psicología ayuda a comprender cómo pensamos, sentimos y reaccionamos
+ante situaciones académicas y personales.
+Durante la universidad pueden aparecer estrés, ansiedad,
+presión y agotamiento emocional.
+Contar con apoyo psicológico permite manejar mejor estas situaciones.
+</p>
+
+<p><strong>¿Cuándo puede ayudar un psicólogo?</strong></p>
+
+<ul>
+<li>Cuando el estrés académico es constante</li>
+<li>Cuando la ansiedad afecta exámenes</li>
+<li>Cuando cuesta concentrarse</li>
+<li>Cuando hay agotamiento emocional</li>
+<li>Cuando problemas personales afectan el rendimiento</li>
+<li>Cuando hay pérdida de motivación frecuente</li>
+</ul>
+
+<div class="alerta">
+⚠ Señales: insomnio frecuente, irritabilidad, cansancio extremo,
+bloqueos mentales y dificultad para concentrarse.
 </div>
+
+<div class="recomendacion">
+✅ Buscar ayuda psicológica es una forma de apoyo y orientación.
+Un psicólogo puede ayudar a mejorar el manejo emocional,
+reducir ansiedad y fortalecer hábitos de estudio.
+</div>
+
+<button onclick="mostrarPsicologia()">
+Ver mensaje de bienestar emocional
+</button>
+
+<p id="psicoMsg"
+style="margin-top:15px;font-weight:bold;color:#0f5132;"></p>
+
+</div>
+</div>
+
+<!-- PROCRASTINACION -->
 
 <div class="card">
 <h2 onclick="toggle(this)">📚 Procrastinación</h2>
+
 <div class="content">
+
 <ul>
 <li>Dejar tareas para último momento</li>
 <li>Distracciones constantes</li>
-<li>Mala organización del tiempo</li>
+<li>Falta de organización</li>
 </ul>
 
 <div class="alerta">
-⚠ Alertas: entregas tardías, estrés acumulado y cansancio extremo.
+⚠ Alertas: estrés acumulado y entregas tardías.
 </div>
 
 <div class="recomendacion">
-✅ Usa agenda, divide tareas pequeñas y evita redes sociales mientras estudias.
+✅ Divide tareas pequeñas y usa horarios.
+</div>
+
 </div>
 </div>
-</div>
+
+<!-- MOTIVACION -->
 
 <div class="card">
 <h2 onclick="toggle(this)">🎯 Motivación académica</h2>
+
 <div class="content">
+
 <ul>
-<li>Influye directamente en el esfuerzo</li>
-<li>Ayuda a mantener constancia</li>
-<li>Favorece mejores resultados</li>
+<li>Influye en constancia y esfuerzo</li>
+<li>Ayuda a cumplir metas</li>
+<li>Mejora rendimiento académico</li>
 </ul>
 
 <div class="alerta">
-⚠ Señales: desinterés, falta de energía y ausencia de metas.
+⚠ Señales: desinterés y falta de energía.
 </div>
 
 <div class="recomendacion">
-✅ Establece objetivos pequeños y celebra avances.
+✅ Establece metas pequeñas y reconoce tus avances.
+</div>
+
 </div>
 </div>
-</div>
+
+<!-- APOYO FAMILIAR -->
 
 <div class="card">
 <h2 onclick="toggle(this)">🏠 Ambiente familiar</h2>
+
 <div class="content">
+
 <ul>
 <li>Apoyo emocional</li>
 <li>Comprensión familiar</li>
-<li>Espacio tranquilo en casa</li>
+<li>Espacio adecuado para estudiar</li>
 </ul>
 
 <div class="alerta">
-⚠ Alertas: discusiones frecuentes, poca comunicación o ambiente ruidoso.
+⚠ Alertas: discusiones frecuentes o ambiente poco tranquilo.
 </div>
 
 <div class="recomendacion">
-✅ Hablar con la familia y buscar espacios adecuados de estudio.
+✅ Buscar espacios de estudio y fortalecer comunicación.
 </div>
+
 </div>
 </div>
 
+<!-- AMISTADES -->
+
 <div class="card">
 <h2 onclick="toggle(this)">👥 Influencia social y amistades</h2>
+
 <div class="content">
+
 <ul>
-<li>Las amistades pueden motivar o distraer</li>
-<li>El entorno social afecta emociones y hábitos</li>
+<li>Las amistades pueden apoyar o distraer</li>
+<li>El entorno influye en hábitos y emociones</li>
 </ul>
 
 <div class="alerta">
@@ -219,44 +296,58 @@ button:hover{
 </div>
 
 <div class="recomendacion">
-✅ Rodéate de personas que apoyen tu crecimiento académico.
+✅ Rodéate de personas que aporten apoyo positivo.
+</div>
+
 </div>
 </div>
-</div>
+
+<!-- TRABAJO -->
 
 <div class="card">
 <h2 onclick="toggle(this)">💼 Trabajo y estudio</h2>
+
 <div class="content">
+
 <ul>
-<li>Puede generar agotamiento</li>
+<li>Exige más organización</li>
+<li>Puede generar cansancio</li>
 <li>Reduce tiempo libre</li>
-<li>Exige mayor organización</li>
 </ul>
 
 <div class="alerta">
-⚠ Alertas: fatiga, estrés constante y bajo rendimiento.
+⚠ Alertas: agotamiento constante y bajo rendimiento.
 </div>
 
 <div class="recomendacion">
-✅ Crear horarios equilibrados y priorizar descanso.
+✅ Equilibra horarios y respeta tiempos de descanso.
+</div>
+
 </div>
 </div>
-</div>
+
+<!-- HABITOS -->
 
 <div class="card">
-<h2 onclick="toggle(this)">🌱 Hábitos saludables para avanzar</h2>
+<h2 onclick="toggle(this)">🌱 Hábitos saludables</h2>
+
 <div class="content">
+
 <ul>
-<li>Dormir adecuadamente</li>
-<li>Alimentación equilibrada</li>
-<li>Tiempo de descanso</li>
+<li>Dormir bien</li>
+<li>Organizar tiempo</li>
 <li>Actividad física</li>
-<li>Pedir ayuda profesional cuando sea necesario</li>
+<li>Descanso mental</li>
+<li>Pedir ayuda cuando sea necesario</li>
 </ul>
 
-<button onclick="mensaje()">Ver mensaje motivacional</button>
+<button onclick="mensaje()">
+Ver mensaje motivacional
+</button>
 
-<p id="motivacion" style="margin-top:15px;font-weight:bold;color:#0f5132;"></p>
+<p id="motivacion"
+style="margin-top:15px;font-weight:bold;color:#0f5132;"></p>
+
 </div>
 </div>
 
@@ -267,25 +358,48 @@ Conecta y Avanza • Universidad Mesoamericana • Facultad de Ingeniería
 </footer>
 
 <script>
+
 function toggle(element){
-    const content = element.nextElementSibling;
+
+    const content =
+        element.nextElementSibling;
+
     content.style.display =
-        content.style.display==="block" ? "none":"block";
+        content.style.display==="block"
+        ? "none"
+        : "block";
 }
 
 function mensaje(){
+
     const frases=[
-        "Tu bienestar emocional también forma parte de tu éxito académico 🌿",
-        "Un pequeño avance cada día genera grandes resultados 📚",
-        "Pedir apoyo también es una forma de avanzar 🤝",
-        "Cuidarte emocionalmente mejora tu rendimiento académico 💚"
+        "Tu bienestar emocional también es parte de tu éxito académico 🌿",
+        "Cada pequeño avance cuenta 📚",
+        "Pedir apoyo también es avanzar 🤝",
+        "Cuidarte mejora tu rendimiento académico 💚"
     ];
 
-    const random =
+    const random=
         frases[Math.floor(Math.random()*frases.length)];
 
     document.getElementById("motivacion").innerText=random;
 }
+
+function mostrarPsicologia(){
+
+    const frases=[
+        "Buscar ayuda psicológica también es cuidarte 💚",
+        "Tu salud mental merece atención 🌿",
+        "Hablar con un profesional puede ayudarte a avanzar 🧠",
+        "Pedir apoyo emocional es parte del crecimiento universitario 🤝"
+    ];
+
+    const random=
+        frases[Math.floor(Math.random()*frases.length)];
+
+    document.getElementById("psicoMsg").innerText=random;
+}
+
 </script>
 
 </body>
